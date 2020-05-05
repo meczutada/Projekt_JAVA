@@ -7,7 +7,7 @@ public class Human {
     String firstName;
     String lastName;
     Animal pet;
-    Car vehicle;
+    private Car vehicle;
 
     private Double salary;
     private LocalDateTime salaryLastAccessDateTime;
@@ -35,6 +35,22 @@ public class Human {
             System.out.println("The annex to the contract is required to be received from Ms. Hani from HR");
             System.out.println("ZUS and US already know about the payout change and there is no point in hiding your income");
             this.salary = salary;
+        }
+    }
+
+    public Car getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Car newCar) {
+        if (this.salary > newCar.price) {
+            this.vehicle = newCar;
+            System.out.println("A little cash is gone, but it's yours!");
+        } else if (this.salary > (newCar.price/12)) {
+            this.vehicle = newCar;
+            System.out.println("On credit, but it is !");
+        } else {
+            System.out.println("Forget about the car for now! Ask for a raise or find a new job.");
         }
     }
 }

@@ -45,8 +45,10 @@ public class Main {
         me.pet.takeForAWalk();
         me.pet.takeForAWalk();
 
-        me.vehicle = new Car("Toyota", "Aygo", 2006, 45, "blue");
 
+        System.out.println();
+        Car tojka = new Car("Toyota", "Aygo", 2006, 45, "blue", 6500);
+        me.setVehicle(tojka);
 
     }
 }
