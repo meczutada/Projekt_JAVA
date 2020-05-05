@@ -41,4 +41,12 @@ public class Animal {
         }
         else System.out.println("Now you're the one who can walk to the cemetery.");
     }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "species='" + species + '\'' +
+                ", weight=" + weight +
+                '}';
+    }
 }

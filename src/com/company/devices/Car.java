@@ -1,4 +1,4 @@
-package com.company;
+package com.company.devices;
 
 public class Car {
     final String manufacturer;
@@ -6,7 +6,7 @@ public class Car {
     Integer production;
     Integer capacity;
     String colour;
-    Integer price;
+    public Integer price;
 
     public Car(String manufacturer, String model, Integer productionYear, Integer tankCapacity, String colour, Integer price) {
         this.manufacturer = manufacturer;
@@ -15,5 +15,17 @@ public class Car {
         this.capacity = tankCapacity;
         this.colour = colour;
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", production=" + production +
+                ", capacity=" + capacity +
+                ", colour='" + colour + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

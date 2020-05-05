@@ -1,5 +1,6 @@
 package com.company;
 import java.time.format.DateTimeFormatter;
+import com.company.devices.Car;
 
 public class Main {
     public static void main(String[] args) {
@@ -50,5 +51,12 @@ public class Main {
         Car tojka = new Car("Toyota", "Aygo", 2006, 45, "blue", 6500);
         me.setVehicle(tojka);
 
+        Car tojka2 = new Car("Toyota", "Aygo", 2006, 45, "blue", 6500);
+
+        System.out.println("-----------------------------------------------------------------------------------------");
+        System.out.println(tojka == tojka2);
+        System.out.println(tojka);
+        System.out.println(tojka2);
+        System.out.println(me.pet);
     }
 }
