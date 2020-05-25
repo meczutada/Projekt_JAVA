@@ -2,10 +2,11 @@ package com.company;
 
 public class Animal {
     final String species;
-    private Double weight;
+    protected Double weight;
 
     public Animal(String species) {
         this.species = species;
+        //noinspection EnhancedSwitchMigration
         switch (species) {
             case "dog":
                 this.weight = 15.0;

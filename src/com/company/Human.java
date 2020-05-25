@@ -3,18 +3,22 @@ import java.time.LocalDateTime;
 import com.company.devices.Car;
 
 
-public class Human {
+public class Human extends Animal {
     String firstName;
     String lastName;
     Animal pet;
     private Car vehicle;
-
     private Double salary;
     private LocalDateTime salaryLastAccessDateTime;
     private Double salaryLastAccessValue;
 
+    public final static Double DEFAULT_HUMAN_WEIGHT = 70.0;
+
+
     public Human() {
-        this.salary = 2600.0;
+        super("homo sapiens");
+        this.weight= DEFAULT_HUMAN_WEIGHT;
+        this.salary = 3600.0;
         this.salaryLastAccessDateTime = LocalDateTime.now();
         this.salaryLastAccessValue = this.salary;
     }
@@ -26,7 +30,7 @@ public class Human {
         return this.salary;
     }
 
-    public void setSalary(Double salary) {
+    public void setSalary() {
         if (salary < 0) {
             System.out.println("Salary cannot be a negative value.");
         } else {
@@ -34,7 +38,6 @@ public class Human {
             System.out.println("New data was sent to the accountant.");
             System.out.println("The annex to the contract is required to be received from Ms. Hani from HR");
             System.out.println("ZUS and US already know about the payout change and there is no point in hiding your income");
-            this.salary = salary;
         }
     }
 
@@ -66,4 +69,5 @@ public class Human {
                 ", salaryLastAccessValue=" + salaryLastAccessValue +
                 '}';
     }
+
 }
