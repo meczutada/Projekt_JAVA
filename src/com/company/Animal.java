@@ -1,6 +1,6 @@
 package com.company;
 
-public class Animal {
+public class Animal implements salleable{
     final String species;
     protected Double weight;
 
@@ -44,10 +44,22 @@ public class Animal {
     }
 
     @Override
-    public String toString() {
-        return "Animal{" +
-                "species='" + species + '\'' +
-                ", weight=" + weight +
-                '}';
+    public void sell(Human seller, Human buyer, Double price)
+    {
+        if (seller.pet == null) {
+            System.out.println("Seller" + seller.getName() + " don't have a animal.");
+        } else if (buyer.cash >= price) {
+            System.out.println((buyer.getName() + " bought a " + this + " from " + seller.getName() +"."));
+            buyer.pet = this;
+            buyer.cash -= price;
+            seller.pet = null;
+            seller.cash += price;
+        } else {
+            System.out.println(buyer.getName() + " doesn't have enough money.");
+        }
     }
+    public String toString() {
+        return species ;
+    }
+
 }
