@@ -2,11 +2,13 @@ package com.company.devices;
 import com.company.Human;
 import com.company.salleable;
 
-public class Car extends Device implements salleable {
+public abstract class Car extends Device implements salleable {
    public Double price;
     public Car(String producer, String model, Integer yearOfProduction) {
         super(producer,model,yearOfProduction);
          }
+
+     public abstract void refuel();
 
     @Override
     public void turnOn() {

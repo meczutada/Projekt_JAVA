@@ -6,6 +6,9 @@ import com.company.creatures.Pet;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 import com.company.creatures.Animal;
+import com.company.devices.Diesel;
+
+import java.net.URL;
 
 
 public class Main {
@@ -29,7 +32,7 @@ public class Main {
 
 
         System.out.println();
-        Car tojka = new Car("Toyota", "Aygo", 2006);
+        Diesel tojka = new Diesel("Toyota", "Aygo", 2006);
         tojka.price = 4900.9;
         me.vehicle = tojka;
         Phone fon = new Phone("Samsung", "S8", 2018);
@@ -98,8 +101,8 @@ public class Main {
         pig.feed();
         mruczek.feed(3.0);
 
-
-
+        System.out.println("-----------------------------------------------------------------------------------------");
+        tojka.refuel();
 
 
     }
