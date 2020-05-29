@@ -1,6 +1,9 @@
-package com.company;
+package com.company.creatures;
+import com.company.Human;
+import com.company.salleable;
+import com.company.creatures.Feedable;
 
-public class Animal implements salleable{
+public abstract class Animal implements salleable, Feedable{
     final String species;
     protected Double weight;
 
@@ -17,22 +20,34 @@ public class Animal implements salleable{
             case "myszojeleń":
                 this.weight = 2.4;
                 break;
+            case "pig":
+                this.weight = 95.0;
+                break;
             default:
                 this.weight = 1.0;
                 break;
+
         }
     }
 
     private boolean isAlive() {
         return this.weight > 0;
     }
-
+    @Override
     public void feed() {
         if (isAlive()) {
             this.weight++;
-            System.out.println("Sweet! Now I weigh " + this.weight + " kg");
+            System.out.println("Sweet! Now "+ this.species +" weighs " + this.weight + " kg");
         }
-        else System.out.println("You starved him!");
+        else System.out.println("To late! "+ this.species + " is dead :(");
+    }
+
+    @Override
+    public void feed(Double foodWeight){
+        if (isAlive()){
+            this.weight += foodWeight;
+            System.out.println("Sweet! Now "+ this.species +" weighs " + this.weight + " kg");
+        } else System.out.println("To late! "+ this.species + " is dead :(");
     }
 
     public void takeForAWalk() {

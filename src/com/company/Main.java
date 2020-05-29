@@ -1,7 +1,11 @@
 package com.company;
 import java.time.format.DateTimeFormatter;
+
+import com.company.creatures.FarmAnimal;
+import com.company.creatures.Pet;
 import com.company.devices.Car;
 import com.company.devices.Phone;
+import com.company.creatures.Animal;
 
 
 public class Main {
@@ -12,7 +16,7 @@ public class Main {
         Human me = new Human();
         me.firstName = "Adrianna";
         me.lastName = "Mechut";
-        me.pet = new Animal("dog");
+        me.pet = new Pet("dog");
 
         me.pet.feed();
         me.pet.takeForAWalk();
@@ -72,7 +76,7 @@ public class Main {
         kamil.firstName = "Kamil";
         kamil.lastName = "Wonsz";
         kamil.cash = 168732.53;
-        Animal mruczek = new Animal("cat");
+        Pet mruczek = new Pet("cat");
         kamil.pet = mruczek;
         System.out.println(piotr);
         System.out.println(kamil);
@@ -85,6 +89,16 @@ public class Main {
         System.out.println(kamil);
 
         anna.sell(kamil,piotr,2983.00);
+
+        System.out.println("-----------------------------------------------------------------------------------------");
+        FarmAnimal pig = new FarmAnimal("pig");
+        pig.feed();
+        pig.feed(4.5);
+        pig.beEaten();
+        pig.feed();
+        mruczek.feed(3.0);
+
+
 
 
 

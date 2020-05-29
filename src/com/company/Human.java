@@ -2,6 +2,7 @@ package com.company;
 import java.time.LocalDateTime;
 import com.company.devices.Car;
 import com.company.devices.Phone;
+import com.company.creatures.Animal;
 import com.company.salleable;
 
 public class Human implements salleable{
