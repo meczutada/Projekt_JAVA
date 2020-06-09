@@ -1,4 +1,5 @@
 package com.company;
+import java.net.MalformedURLException;
 import java.time.format.DateTimeFormatter;
 
 import com.company.creatures.FarmAnimal;
@@ -12,7 +13,7 @@ import java.net.URL;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MalformedURLException {
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
 
@@ -103,6 +104,12 @@ public class Main {
 
         System.out.println("-----------------------------------------------------------------------------------------");
         tojka.refuel();
+
+        System.out.println();
+        fon.installApp("Facebook");
+        fon.installApp("Spotify","2.0");
+        String[] apps = {"Facebook","Messenger","Instagram"};
+        fon.installApp(apps);
 
 
     }

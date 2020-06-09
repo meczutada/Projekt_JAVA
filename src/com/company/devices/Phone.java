@@ -1,34 +1,49 @@
 package com.company.devices;
 import com.company.Human;
 import com.company.salleable;
+
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
 public class Phone extends Device implements salleable {
-    public static final String defaultURL = "www.uhave.com";
-    public static final String defaultProtocol = "https";
-    public static final String defaultNameVersion = "v1";
 
+    private static final String DEFAULT_APP_PROTOCOL = "https";
+    private static final String DEFAULT_APP_SERVER = "www.uhave.com";
+    private static final int DEFAULT_PORT_NUMBER = 864;
     public Double price;
     public Phone(String producer, String model, Integer yearOfProduction)
     {
         super(producer, model, yearOfProduction);
     }
 
-    public void installApp(String name) {
-        System.out.println("You are installing application: " + name); }
-    public void installApp(String name, String version) {
-        System.out.println("You are installing application: " + name + "\n Version: " + version); }
-    public void installApp(List<String> names) {
-        for (String app : names) {
-            System.out.println("You are installing applications: " + app); }
+    public void installApp(String[] names) throws MalformedURLException {
+        System.out.println("Instalowanie aplikacji na podstawie tablicy nazw.");
+        for (String name: names){
+            this.installApp(name);
+        }
     }
+    public void installApp(String name) throws MalformedURLException {
+        System.out.println("Instalowanie aplikacji na podstawie nazwy.");
+        this.installApp(name, "latest");
+    }
+
+    public void installApp(String name, String version) throws MalformedURLException {
+        System.out.println("Instalowanie aplikacji na podstawie nazwy i wersji.");
+        URL address = new URL(DEFAULT_APP_PROTOCOL, DEFAULT_APP_SERVER, DEFAULT_PORT_NUMBER, name + "-" + version);
+        this.installApp(address);
+    }
+
     public void installApp(URL address) {
-        String app = address.getPath();
-        String nameVersion = address.getQuery();
-        String host = address.getHost();
-        String protocol = address.getProtocol();
-        System.out.println("You are installing application: " + app + "\n version: " + nameVersion + "\n host: " + host + "\n protocol: " + protocol);
+        System.out.println("Instalowanie aplikacji na podstawie url.");
+        //sprawdzenie płatności
+        //połaczenie z serwerem
+        //pobranie pliku
+        //wypakowanie
+        //instalacja
+        //dodanie ikony
+        //itp
+        System.out.println("Instalowanie aplicjacji zakończono pomyślnie. " + address.getFile() + ", z serwera " + address.getHost());
     }
     @Override
     public void turnOn() {
