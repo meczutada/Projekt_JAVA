@@ -43,7 +43,7 @@ public class Phone extends Device implements salleable {
         //instalacja
         //dodanie ikony
         //itp
-        System.out.println("Instalowanie aplicjacji zakończono pomyślnie. " + address.getFile() + ", z serwera " + address.getHost());
+        System.out.println("You have installed the application. " + address.getFile() + ", z serwera " + address.getHost());
     }
     @Override
     public void turnOn() {

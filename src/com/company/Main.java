@@ -1,19 +1,19 @@
 package com.company;
 import java.net.MalformedURLException;
 import java.time.format.DateTimeFormatter;
-
 import com.company.creatures.FarmAnimal;
 import com.company.creatures.Pet;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 import com.company.creatures.Animal;
 import com.company.devices.Diesel;
-
+import com.company.devices.*;
+import com.company.Human;
 import java.net.URL;
 
 
 public class Main {
-    public static void main(String[] args) throws MalformedURLException {
+    public static void main(String[] args) throws Exception {
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
 
@@ -33,9 +33,6 @@ public class Main {
 
 
         System.out.println();
-        Diesel tojka = new Diesel("Toyota", "Aygo", 2006);
-        tojka.price = 4900.9;
-        me.vehicle = tojka;
         Phone fon = new Phone("Samsung", "S8", 2018);
         fon.price = 2000.00;
         me.phone = fon;
@@ -46,11 +43,9 @@ public class Main {
         System.out.println();
 
         me.cash = 123000.0;
-        System.out.println(tojka);
         System.out.println(fon);
         System.out.println(me);
         System.out.println("-----------------------------------------------------------------------------------------");
-        tojka.turnOn();
         fon.turnOn();
         System.out.println("-----------------------------------------------------------------------------------------");
         Human anna = new Human();
@@ -59,15 +54,7 @@ public class Main {
         anna.cash = 3400.0;
         System.out.println(anna);
         System.out.println();
-        tojka.sell(me, anna, 1500.0);
-        System.out.println(anna);
-        System.out.println(me);
-        tojka.sell(me, anna, 273.0);
-        tojka.sell(anna, me, 5.0);
-        System.out.println(anna);
-        tojka.sell(me,anna, 22848.0);
-        System.out.println();
-        fon.sell(anna,me,1500.0);
+
 
         Human piotr = new Human();
         piotr.firstName = "Piotr";
@@ -103,13 +90,30 @@ public class Main {
         mruczek.feed(3.0);
 
         System.out.println("-----------------------------------------------------------------------------------------");
-        tojka.refuel();
-
         System.out.println();
         fon.installApp("Facebook");
         fon.installApp("Spotify","2.0");
         String[] apps = {"Facebook","Messenger","Instagram"};
         fon.installApp(apps);
+        System.out.println("-----------------------------------------------------------------------------------------");
+
+        Car tojka = new Diesel("Toyota", "Aygo", 2006);
+        me.setCar(tojka,150.0,0);
+        System.out.println(me);
+        Car BMW = new Electric("BMW","x5",2001);
+        me.setCar(BMW,50.0,1);
+        me.sortGarage();
+        System.out.println(me);
+        BMW.sell(me, kamil, 5000.0);
+        System.out.println(kamil);
+        System.out.println(me);
+        Car ford = new LPG("Ford", "Fokus", 2020);
+        ford.value = 25900.0;
+      //  ford.sell(anna,me,1234.9);//Exception in thread "main" java.lang.Exception:  Anna Kowalska nie ma co sprzedawać, garaż jest pusty.
+        me.setCar(ford,21000.9,0);
+        System.out.println(me);
+      //  BMW.sell(kamil,me,1232.9);//Exception in thread "main" java.lang.Exception:  Adrianna Mechut nie ma miejsca w garażu. Zorganizuj najpierw jakieś dodatkowe miejsce parkingowe!
+      //  BMW.sell(kamil,anna,2836283283.9);//Exception in thread "main" java.lang.Exception: Jeśli brak Ci siana zadzwoń do bociana! :)
 
 
     }
