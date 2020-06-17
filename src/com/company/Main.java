@@ -109,11 +109,25 @@ public class Main {
         System.out.println(me);
         Car ford = new LPG("Ford", "Fokus", 2020);
         ford.value = 25900.0;
-      //  ford.sell(anna,me,1234.9);//Exception in thread "main" java.lang.Exception:  Anna Kowalska nie ma co sprzedawać, garaż jest pusty.
+        //  ford.sell(anna,me,1234.9);//Exception in thread "main" java.lang.Exception:  Anna Kowalska nie ma co sprzedawać, garaż jest pusty.
         me.setCar(ford,21000.9,0);
         System.out.println(me);
-      //  BMW.sell(kamil,me,1232.9);//Exception in thread "main" java.lang.Exception:  Adrianna Mechut nie ma miejsca w garażu. Zorganizuj najpierw jakieś dodatkowe miejsce parkingowe!
-      //  BMW.sell(kamil,anna,2836283283.9);//Exception in thread "main" java.lang.Exception: Jeśli brak Ci siana zadzwoń do bociana! :)
+        //  BMW.sell(kamil,me,1232.9);//Exception in thread "main" java.lang.Exception:  Adrianna Mechut nie ma miejsca w garażu. Zorganizuj najpierw jakieś dodatkowe miejsce parkingowe!
+        //  BMW.sell(kamil,anna,2836283283.9);//Exception in thread "main" java.lang.Exception: Jeśli brak Ci siana zadzwoń do bociana! :)
+
+        System.out.println("-----------------------------------------------------------------------------------------");
+        System.out.println();
+        System.out.println("Czy" + me.getName() + " był/a właścicielem samochodu " + tojka.toString() +" ? \nOdpowiedź: " + tojka.wasOwner(me));
+        System.out.println("Czy" + me.getName() + " był/a właścicielem samochodu " + BMW.toString() +" ? \nOdpowiedź: " + tojka.wasOwner(me));
+        System.out.println("Czy" + kamil.getName() + " był/a właścicielem samochodu " + tojka.toString() +" ? \nOdpowiedź: " + tojka.wasOwner(me));
+        System.out.println("Czy" + me.getName() + " sprzedał/a samochod " + BMW.toString() + " dla"+kamil.getName()+" ? \nOdpowiedź: " + BMW.didSell(me,kamil,BMW));
+        System.out.println("Czy" + kamil.getName() + " sprzedał/a samochod " + BMW.toString() + " dla"+me.getName()+" ? \nOdpowiedź: " + BMW.didSell(kamil,me,BMW));
+        System.out.println("Samochód: "+tojka.toString()+ " uczestniczył w transakcji sprzedaży  "+tojka.countTransaction() +" razy.");
+        System.out.println("Samochód: "+BMW.toString()+ " uczestniczył w transakcji sprzedaży "+BMW.countTransaction() +" razy.");
+        tojka.sell(me,anna,21.0);
+        System.out.println("Samochód: "+tojka.toString()+ " uczestniczył w transakcji sprzedaży  "+tojka.countTransaction() +" razy.");
+        tojka.sell(anna,me,2234.5);
+        System.out.println("Samochód: "+tojka.toString()+ " uczestniczył w transakcji sprzedaży  "+tojka.countTransaction() +" razy.");
 
 
     }

@@ -11,7 +11,7 @@ public class Human implements salleable{
     Double weight;
     public Animal pet;
     private final int numberOfSpaces;
-    private final Car[] garage;
+    public final Car[] garage;
     private final Double salary;
     private LocalDateTime salaryLastAccessDateTime;
     private Double salaryLastAccessValue;
@@ -84,16 +84,24 @@ public class Human implements salleable{
         if (spaceNumber < 0 || spaceNumber >= numberOfSpaces) return false;
         if (price == 0.0){
             this.garage[spaceNumber] = newCar;
+            if (newCar != null) {
+                newCar.owners.add(this);
+                newCar.lastOwner.add(this);
+            }
             return true;
         }
         boolean bought = false;
         if (this.cash > price) {
             this.garage[spaceNumber] = newCar;
+            newCar.owners.add(this);
+            newCar.lastOwner.add(this);
             System.out.println("To:"+this.getName() + " - A little cash is gone, but it's yours!");
             this.cash -= price;
             bought = true;
         } else if (this.cash > (price/12)) {
             this.garage[spaceNumber] = newCar;
+            newCar.owners.add(this);
+            newCar.lastOwner.add(this);
             System.out.println("To:"+this.getName() + " - On credit, but it is !");
             this.cash -= price/12;
             bought = true;

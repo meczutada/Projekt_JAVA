@@ -2,11 +2,18 @@ package com.company.devices;
 import com.company.Human;
 import com.company.salleable;
 
+import java.util.ArrayList;
+
 public abstract class Car extends Device implements salleable, Comparable<Car> {
  //  public Double price;
+    public ArrayList<Human> owners;
+    public ArrayList<Human> lastOwner;
+
     public Car(String producer, String model, Integer yearOfProduction) {
         super(producer,model,yearOfProduction);
-         }
+        owners = new ArrayList<Human>();
+        lastOwner = new ArrayList<Human>();
+    }
 
      public abstract void refuel();
 
@@ -25,10 +32,11 @@ public abstract class Car extends Device implements salleable, Comparable<Car> {
     @Override
     public void sell(Human seller, Human buyer, Double price) throws Exception {
         int sellerCarNumber = seller.getCarNumber(this);
-        if (sellerCarNumber >= 0) {
+        if (sellerCarNumber >= 0 && seller.equals(this.owners.get(this.owners.size() -1))) {
             int buyerSpaceNumber = buyer.getFirstSpace();
             if (buyerSpaceNumber >= 0) {
                 if (buyer.setCar(this, price, buyerSpaceNumber)) {
+                    this.lastOwner.remove(seller);
                     System.out.println(buyer.getName() + " kupił/a " + this + " od " + seller.getName());
                     seller.setCar(null, 0.0, sellerCarNumber);
                     seller.cash += price;
@@ -43,4 +51,29 @@ public abstract class Car extends Device implements salleable, Comparable<Car> {
             throw new Exception(seller.getName() + " nie ma co sprzedawać, garaż jest pusty.");
         }
     }
-}
+    public boolean wasOwner(Human human) {
+        return owners.contains(human);
+    }
+    public boolean isOwner (Human human) {
+        return lastOwner.contains(human);
+    }
+
+    public boolean didSell(Human seller, Human buyer, Car car) {
+        if (car.wasOwner(seller))
+        {
+            if (car.wasOwner(buyer))
+            {
+                if (car.isOwner(buyer))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        return false;
+    }
+
+        public int countTransaction () {
+        return owners.size();
+        }
+    }
