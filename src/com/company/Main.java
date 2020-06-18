@@ -10,6 +10,7 @@ import com.company.devices.Diesel;
 import com.company.devices.*;
 import com.company.Human;
 import java.net.URL;
+import java.util.ArrayList;
 
 
 public class Main {
@@ -129,6 +130,28 @@ public class Main {
         tojka.sell(anna,me,2234.5);
         System.out.println("Samochód: "+tojka.toString()+ " uczestniczył w transakcji sprzedaży  "+tojka.countTransaction() +" razy.");
 
+        System.out.println("-----------------------------------------------------------------------------------------");
+        System.out.println();
+        Application facebook = new Application("Facebook","latest",0.0);
+        Application instagram = new Application("Instagram","latest",0.0);
+        Application TeamSpeak = new Application("TeamSpeak","latest",5.2);
+        Application NavigationPro = new Application("Navigation Pro","latest",23.0);
+        Application Tasker = new Application("Tasker", "latest", 9.9);
+        Application TocaLife = new Application("Toca Life", "latest", 12659485982.3);
+        Application NavRadio = new Application("Nav Radio+","latest", 15.9);
+        System.out.println(anna.getName()+" posiada "+anna.cash+" zł.");
+        fon.installNewApp(anna,TocaLife); // nie ma kasy
+        fon.installNewApp(anna,NavRadio);
+        fon.installNewApp(anna,instagram);
+        fon.installNewApp(anna,facebook);
+        System.out.println(anna.getName()+" posiada "+anna.cash+" zł.");
+        fon.installNewApp(anna,Tasker);
+        fon.installNewApp(anna,NavigationPro);
+        System.out.println(fon.SortNameApp());
+        System.out.println("Czy aplikacja Facebook została zainstalowana?\nOdpowiedź: "+fon.installedApp(facebook));
+        System.out.println("Czy aplikacja TeamSpeak została zainstalowana?\nOdpowiedź: "+fon.installedApp(TeamSpeak));
+        System.out.println(fon.FreeApp());
+        System.out.println(fon.SortPriceApp());
 
     }
 }
